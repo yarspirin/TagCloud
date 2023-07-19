@@ -1,11 +1,18 @@
 import XCTest
+import SwiftUI
 @testable import TagCloud
 
+struct Tag: Identifiable, Hashable {
+  let num: Int
+  let id = UUID()
+}
+
 final class TagCloudTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(TagCloud().text, "Hello, World!")
+  func testTagCloudViewCreation() {
+    let tags = (1 ... 5).map { Tag(num: $0) }
+    let tagCloudView = TagCloudView(data: tags) { tag in
+      Text("\(tag.num)")
     }
+    XCTAssertNotNil(tagCloudView)
+  }
 }
