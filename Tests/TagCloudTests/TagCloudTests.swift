@@ -2,7 +2,7 @@ import XCTest
 import SwiftUI
 @testable import TagCloud
 
-struct Tag: Identifiable, Hashable {
+fileprivate struct Tag {
   let num: Int
   let id = UUID()
 }
