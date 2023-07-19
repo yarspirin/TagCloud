@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollection,
-                                                      Content: View,
-                                                      Data.Element: Identifiable & Hashable {
+public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollection, Content: View, Data.Index: Hashable {
   @State private var height: CGFloat = .zero
   
   private let data: Data
@@ -39,8 +37,8 @@ public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollecti
   private func content(in geometry: GeometryProxy) -> some View {
     ZStack {
       var offset = CGSize.zero
-      ForEach(data) { item in
-        content(item)
+      ForEach(data.indices, id: \.self) { index in
+        content(data[index])
           .padding(.vertical, verticalSpacing)
           .padding(.horizontal, horizontalSpacing)
           .alignmentGuide(HorizontalAlignment.center) { dimension in
@@ -52,7 +50,7 @@ public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollecti
             let result = offset.width
             offset.width += dimension.width
             
-            if let lastItem = data.last, lastItem == item {
+            if index == data.endIndex {
               offset.width = 0
             }
             
@@ -61,7 +59,7 @@ public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollecti
           .alignmentGuide(VerticalAlignment.center) { dimension in
             let result = offset.height
             
-            if let lastItem = data.last, lastItem == item {
+            if index == data.endIndex {
               offset.height = 0
             }
             
@@ -69,10 +67,10 @@ public struct TagCloudView<Data, Content>: View where Data: RandomAccessCollecti
           }
       }
     }
-    .background(readHeight(in: $height))
+    .background(readHeight(to: $height))
   }
   
-  private func readHeight(in binding: Binding<CGFloat>) -> some View {
+  private func readHeight(to binding: Binding<CGFloat>) -> some View {
     GeometryReader { geometry -> Color in
       let rect = geometry.frame(in: .local)
       
