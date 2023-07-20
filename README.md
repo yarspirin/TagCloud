@@ -45,7 +45,7 @@ struct DefaultExampleView: View {
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/default_example.png" alt="Default Example" width="300">
+  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/default_example.png" alt="Default Example" width="500">
 </div>
 
 
@@ -92,7 +92,7 @@ struct CustomExampleView: View {
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/custom_example.gif" alt="Custom Example" width="300">
+  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/custom_example.gif" alt="Custom Example" width="500">
 </div>
 
 ## 💼 Contributing
