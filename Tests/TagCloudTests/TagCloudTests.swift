@@ -10,7 +10,7 @@ fileprivate struct Tag {
 final class TagCloudTests: XCTestCase {
   func testFlowLayoutViewCreation() {
     let tags = (1 ... 5).map { Tag(num: $0) }
-    let flowLayoutView = FlowLayoutView(data: tags) { tag in
+    let flowLayoutView = TagCloudView(data: tags) { tag in
       Text("\(tag.num)")
     }
     XCTAssertNotNil(flowLayoutView)

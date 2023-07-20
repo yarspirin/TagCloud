@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct FlowLayoutView<Data, Content>: View where Data: RandomAccessCollection, Content: View, Data.Index: Hashable {
+struct FlowLayoutView<Data, Content>: View where Data: RandomAccessCollection, Content: View, Data.Index: Hashable {
   @State private var height: CGFloat = .zero
   
   private let data: Data
@@ -15,7 +15,7 @@ public struct FlowLayoutView<Data, Content>: View where Data: RandomAccessCollec
   private let horizontalSpacing: CGFloat
   private let content: (Data.Element) -> Content
   
-  public init(
+  init(
     data: Data,
     verticalSpacing: CGFloat = 4,
     horizontalSpacing: CGFloat = 4,
@@ -27,7 +27,7 @@ public struct FlowLayoutView<Data, Content>: View where Data: RandomAccessCollec
     self.content = content
   }
   
-  public var body: some View {
+  var body: some View {
     GeometryReader { geometry in
       content(in: geometry)
     }

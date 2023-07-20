@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TagView: View {
+public struct TagView: View {
   private let tag: String
   private let textColor: Color
   private let foregroundColor: Color
@@ -15,7 +15,7 @@ struct TagView: View {
   private let borderColor: Color
   private let cornerRadius: CGFloat
   
-  init(
+  public init(
     tag: String,
     textColor: Color = .black,
     foregroundColor: Color = .white,
@@ -31,7 +31,7 @@ struct TagView: View {
     self.cornerRadius = cornerRadius
   }
   
-  var body: some View {
+  public var body: some View {
     Text(tag)
       .foregroundColor(textColor)
       .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
