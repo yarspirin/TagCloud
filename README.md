@@ -4,10 +4,10 @@
 
 ## 🚀 Features
 
-- Effortless Integration: Set up your tag cloud with a single line of code using the default`TagCloudView`.
-- Fully Customizable: Use any data type that conforms to `RandomAccessCollection` and create your own custom views.
-- Automatic Resizing: Flow layout for optimal use of space that automatically adjusts as tags are added or removed.
-- Stylish and Modern: Built entirely with SwiftUI for modern and stylish UIs.
+- **Effortless Integration**: Set up your tag cloud with a single line of code using the default `TagCloudView`.
+- **Fully Customizable**: Use any data type that conforms to `RandomAccessCollection` and create your own custom views.
+- **Automatic Resizing**: Flow layout for optimal use of space that automatically adjusts as tags are added or removed.
+- **Stylish and Modern**: Built entirely with SwiftUI for modern and stylish UIs.
 
 ## 🔧 Requirements
 
@@ -44,6 +44,11 @@ struct DefaultExampleView: View {
 }
 ```
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/default_example.png" alt="Default Example" width="300">
+</div>
+
+
 ### 🔨 Custom `TagCloudView`
 
 For more advanced usage, **TagCloud** allows you to fully customize the tag cloud. You can provide your own collection of data and a closure to generate custom views from your data:
@@ -52,14 +57,43 @@ For more advanced usage, **TagCloud** allows you to fully customize the tag clou
 import SwiftUI
 import TagCloud
 
-struct CustomizedExampleView: View {
-  let tags = ["Hello", "World", "I", "love", "Swift", "and", "tag", "clouds"]
+struct SelectableButton: View {
+  @State var isSelected = false
+  let title: String
   
   var body: some View {
-    TagCloudView(tags: tags)
+    Button {
+      isSelected.toggle()
+    } label: {
+      Text(title)
+        .foregroundColor(isSelected ? .white : .black)
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+        .background(
+          RoundedRectangle(cornerRadius: 10)
+            .foregroundColor(isSelected ? .black : .white)
+        )
+        .overlay(
+          RoundedRectangle(cornerRadius: 10)
+            .stroke(isSelected ? .white : .black, lineWidth: 1)
+        )
+    }
+  }
+}
+
+struct CustomExampleView: View {
+  let titles = ["Hello", "World", "I", "Love", "Swift", "And", "Tag", "Clouds"]
+  
+  var body: some View {
+    TagCloudView(data: titles) { title in
+      SelectableButton(title: title)
+    }
   }
 }
 ```
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mountain-viewer/TagCloud/master/Resources/custom_example.gif" alt="Custom Example" width="300">
+</div>
 
 ## 💼 Contributing
 
