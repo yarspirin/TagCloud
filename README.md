@@ -21,7 +21,7 @@ Using the Swift Package Manager, add **TagCloud** as a dependency to your `Packa
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/mountainviewer/TagCloud.git", .upToNextMajor(from: "1.0.0"))
+  .package(url: "https://github.com/mountainviewer/TagCloud.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
