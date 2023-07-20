@@ -57,7 +57,7 @@ For more advanced usage, **TagCloud** allows you to fully customize the tag clou
 import SwiftUI
 import TagCloud
 
-struct SelectableButton: View {
+struct SelectableTag: View {
   @State var isSelected = false
   let title: String
   
@@ -85,7 +85,7 @@ struct CustomExampleView: View {
   
   var body: some View {
     TagCloudView(data: titles) { title in
-      SelectableButton(title: title)
+      SelectableTag(title: title)
     }
   }
 }
